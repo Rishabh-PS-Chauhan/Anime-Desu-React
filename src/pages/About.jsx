@@ -4,14 +4,14 @@ import {
   Container,
   Typography,
   Card,
-  CardContent,
   Grid,
   List,
   ListItem,
   ListItemText,
-  Divider,
+  Button,
 } from '@mui/material';
 import { CheckCircle } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const stats = [
@@ -241,6 +241,8 @@ const About = () => {
           </Typography>
           <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Button
+              component={Link}
+              to="/contact"
               variant="contained"
               sx={{
                 backgroundColor: 'white',
