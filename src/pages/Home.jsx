@@ -175,20 +175,37 @@ const Home = () => {
             <Card
               key={index}
               sx={{
-                height: '400px',
-                marginBottom: index === 0 ? '10rem' : '5rem',
+                minHeight: { xs: 'auto', md: '400px' },
+                marginBottom: index === 0 ? { xs: '4rem', md: '10rem' } : '5rem',
                 overflow: 'hidden',
                 display: 'flex',
-                flexDirection: index === 1 ? 'row-reverse' : 'row',
+                flexDirection: {
+                  xs: 'column',
+                  md: index === 1 ? 'row-reverse' : 'row',
+                },
+                boxShadow: '0 0 20px rgba(0, 0, 0, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+                },
               }}
             >
-              <Box sx={{ width: '50%', height: '100%' }}>
+              <Box
+                sx={{
+                  width: { xs: '100%', md: '50%' },
+                  minHeight: { xs: '240px', md: 'auto' },
+                  overflow: 'hidden',
+                }}
+              >
                 <CardMedia
                   component="img"
                   image={item.image}
                   alt={item.title}
                   sx={{
-                    height: '100%',
+                    width: '100%',
+                    height: { xs: '240px', md: '100%' },
+                    minHeight: { md: '400px' },
                     objectFit: 'cover',
                     transition: 'transform 0.3s ease',
                     '&:hover': {
@@ -199,18 +216,30 @@ const Home = () => {
               </Box>
               <Box
                 sx={{
-                  width: '50%',
-                  padding: '2rem',
+                  width: { xs: '100%', md: '50%' },
+                  padding: { xs: '2rem 1.5rem', md: '2.5rem 3rem' },
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'center',
                   textAlign: 'center',
                 }}
               >
-                <Typography variant="h2" sx={{ marginBottom: '1rem' }}>
+                <Typography
+                  variant="h2"
+                  sx={{ marginBottom: '1rem', fontSize: { xs: '1.75rem', md: '2rem' } }}
+                >
                   {item.title}
                 </Typography>
-                <Typography variant="body1" sx={{ marginBottom: '1rem', lineHeight: 1.7 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    marginBottom: '1.5rem',
+                    lineHeight: 1.7,
+                    fontSize: { xs: '1rem', md: '1.05rem' },
+                    letterSpacing: 'normal',
+                    color: '#555555',
+                  }}
+                >
                   {item.description}
                 </Typography>
                 <Button
